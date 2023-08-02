@@ -1,0 +1,55 @@
+Insert into EmployeeDemographics VALUES
+(1011, 'Ryan', 'Howard', 26, 'Male'),
+(NULL, 'Holly','Flax', NULL, 'Male'),
+(1013, 'Darryl', 'Philbin', NULL, 'Male')
+
+Insert into EmployeeSalary VALUES
+(1010, NULL, 47000),
+(NULL, 'Salesman', 43000)
+
+
+Select * from
+[SQL Tutorial].[dbo].[EmployeeDemographics]
+
+Select * from
+[SQL Tutorial].[dbo].[EmployeeSalary]
+
+Select *
+FROM [SQL Tutorial].[dbo].[EmployeeDemographics]
+inner join [SQL Tutorial].[dbo].[EmployeeSalary]
+	on EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+Select *
+FROM [SQL Tutorial].[dbo].[EmployeeDemographics]
+full outer join [SQL Tutorial].[dbo].[EmployeeSalary]
+	on EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+Select *
+FROM [SQL Tutorial].[dbo].[EmployeeDemographics]
+left outer join [SQL Tutorial].[dbo].[EmployeeSalary]
+	on EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+Select *
+FROM [SQL Tutorial].[dbo].[EmployeeDemographics]
+right outer join [SQL Tutorial].[dbo].[EmployeeSalary]
+	on EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+Select EmployeeSalary.EmployeeID, FirstName, LastName, JobTitle, Salary
+FROM [SQL Tutorial].[dbo].[EmployeeDemographics]
+right outer join [SQL Tutorial].[dbo].[EmployeeSalary]
+	on EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+Select EmployeeDemographics.EmployeeID, FirstName, LastName, Salary
+FROM [SQL Tutorial].[dbo].[EmployeeDemographics]
+full outer join [SQL Tutorial].[dbo].[EmployeeSalary]
+	on EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+	Where FirstName <> 'Michael'
+	Order by Salary DESC
+
+Select JobTitle, AVG(Salary)
+FROM [SQL Tutorial].[dbo].[EmployeeDemographics]
+inner join [SQL Tutorial].[dbo].[EmployeeSalary]
+	on EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+	where JobTitle = 'Salesman'
+	group by JobTitle
+	
